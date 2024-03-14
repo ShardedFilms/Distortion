@@ -26,9 +26,10 @@ import java.lang.reflect.*;
 import static mindustry.Vars.*;
 
 public abstract class Clump {
-    //public void update(){}
+    public void update(){}
     public void draw(){}
     public void init(){}
     public void loadAssets(){}
     public void loadClient(){}
+
 }

@@ -6,15 +6,13 @@ import arc.graphics.g2d.TextureAtlas.*;
 import arc.math.*;
 import arc.struct.*;
 
-import static mindustry.Vars.*;
-
 public class AtlasConfig extends Clump {
     //Load
     //public void update(){}
     float time = 0f;
     float interval = 0f;
 
-
+    @Override
     public void update(){
             time += TimeDelta.timeDelta;
 
