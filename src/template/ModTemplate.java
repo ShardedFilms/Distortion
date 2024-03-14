@@ -8,11 +8,7 @@ public class ModTemplate extends Mod{
     @Override
     public void loadContent(){
         EntityRegistry.register();
+        activeState = new AtlasConfig();
+        activeState.init();
     }
-    static void loadState(){
-            activeState = new AtlasConfig();
-            activeState.init();
-
-    }
-
 }
