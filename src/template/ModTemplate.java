@@ -9,6 +9,8 @@ public class ModTemplate extends Mod{
     public void loadContent(){
         EntityRegistry.register();
         activeState = new AtlasConfig();
-        activeState.init();
+        if(activeState != null){
+            activeState.init();
+        }
     }
 }
