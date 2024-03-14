@@ -6,16 +6,20 @@ import arc.graphics.g2d.TextureAtlas.*;
 import arc.math.*;
 import arc.struct.*;
 
+import static mindustry.Vars.*;
+
 public class AtlasConfig extends Clump {
     //Load
     //public void update(){}
     float time = 0f;
+    boolean hadPlayed = false;
     float interval = 0f;
 
     @Override
     public void update(){
-
+        if(state.isGame()){
             time += TimeDelta.timeDelta;
+            hadPlayed = true;
 
             Seq<AtlasRegion> regions = Core.atlas.getRegions();
 
@@ -45,15 +49,9 @@ public class AtlasConfig extends Clump {
                         }
                     }
                 }
-                interval = 3f;
+                interval = 1f;
             }
-
+        }
     }
-
-
-
-
-
-
 
 }

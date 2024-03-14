@@ -54,7 +54,24 @@ public class FlameTest{
 
         activeState = null;
     }
+    public static void loadClient(){
+        //state = Core.settings.getInt("flame-special", 0);
 
+        if(activeState == null) loadState();
+
+        if(activeState != null){
+            activeState.loadClient();
+        }
+    }
+    public static void load(){
+        state = Core.settings.getInt("flame-special", 0);
+        //loadState();
+        if(state > 5) return;
+        loadState();
+
+        if(activeState != null){
+        }
+    }
     static void loadState(){
         if(activeState != null){
             activeState.init();

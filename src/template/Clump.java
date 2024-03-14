@@ -29,4 +29,5 @@ public abstract class Clump {
     public void update(){}
     public void draw(){}
     public void init(){}
+    public void loadClient(){}
 }
