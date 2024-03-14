@@ -16,7 +16,6 @@ public class ModTemplate extends Mod{
         FlameTest.load();
         //listen for game load event
         Events.on(ClientLoadEvent.class, e -> {
-            activeState.loadClient();
                 new TimeDelta();
                 //activeState.init();
                 activeState = new AtlasConfig();
