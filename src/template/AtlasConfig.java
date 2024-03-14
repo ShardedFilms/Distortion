@@ -19,13 +19,9 @@ public class AtlasConfig extends Clump {
     float time = 0f;
     float interval = 0f;
 
-    boolean hadPlayed = false;
 
     public void update(){
-
-        if(state.isGame()){
             time += TimeDelta.timeDelta;
-            hadPlayed = true;
 
             Seq<AtlasRegion> regions = Core.atlas.getRegions();
 
@@ -57,7 +53,7 @@ public class AtlasConfig extends Clump {
                 }
                 interval = 1f;
             }
-        }
+
     }
 
 

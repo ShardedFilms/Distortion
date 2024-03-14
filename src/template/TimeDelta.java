@@ -2,24 +2,9 @@ package template;
 
 import arc.*;
 import arc.func.*;
-import arc.graphics.*;
-import arc.graphics.g2d.*;
-import arc.graphics.gl.*;
 import arc.math.*;
-import arc.struct.*;
 import arc.util.*;
-import arc.util.pooling.Pool.*;
 import mindustry.*;
-import mindustry.entities.bullet.*;
-import mindustry.entities.pattern.*;
-import mindustry.game.*;
-import mindustry.game.EventType.*;
-import mindustry.gen.*;
-import mindustry.graphics.*;
-import mindustry.type.*;
-
-import static mindustry.Vars.*;
-import static arc.Core.*;
 
 public class TimeDelta implements ApplicationListener {
     public static float timeDelta = 1f;
