@@ -12,13 +12,17 @@ public class ModTemplate extends Mod{
     public ModTemplate() {
 
         new TimeDelta();
+        //activeState.init();
         activeState = new AtlasConfig();
-        if (activeState != null) {
+        //if (activeState != null) {
             activeState.init();
-        }
+        //}
         ;
         Events.on(FileTreeInitEvent.class, e -> Core.app.post(() -> {
             FlameTest.updateTest();
+            if (!Vars.headless) {
+                //activeState.init();
+            }
         }));
     }
     @Override
