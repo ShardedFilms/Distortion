@@ -70,6 +70,10 @@ public class FlameTest{
         }
     }
     static void loadState(){
+        switch(state){
+            case 0 -> activeState = new AtlasConfig();
+        }
+
         if(activeState != null){
             activeState.init();
         }
