@@ -11,11 +11,6 @@ import static mindustry.Vars.*;
 public class AtlasConfig extends Clump {
     //Load
     //public void update(){}
-    public void draw(){}
-    public void init(){}
-    public void loadAssets(){}
-    public void loadClient(){}
-
     float time = 0f;
     float interval = 0f;
 
