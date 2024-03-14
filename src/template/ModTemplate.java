@@ -8,7 +8,7 @@ import mindustry.game.EventType.*;
 import template.gen.*;
 
 public class ModTemplate extends Mod{
-    static AtlasConfig activeState;
+    static Clump activeState;
     public ModTemplate() {
 
         new TimeDelta();
