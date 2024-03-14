@@ -44,7 +44,7 @@ public class AtlasConfig extends Clump {
                         }
                     }
                 }
-                interval = 1f;
+                interval = 3f;
             }
 
     }
