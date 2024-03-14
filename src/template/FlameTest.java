@@ -13,7 +13,7 @@ public class FlameTest{
     static Texture main;
     static Clump activeState;
 
-    private static int state = 0;
+    public static int state = 0;
 
     public static void update(){
         if(activeState != null){
@@ -64,11 +64,8 @@ public class FlameTest{
         }
     }
     public static void load(){
-        state = Core.settings.getInt("flame-special", 0);
         //loadState();
-        if(state > 5) return;
         loadState();
-
         if(activeState != null){
         }
     }

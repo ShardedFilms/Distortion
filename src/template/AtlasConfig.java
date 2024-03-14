@@ -5,6 +5,7 @@ import arc.graphics.*;
 import arc.graphics.g2d.TextureAtlas.*;
 import arc.math.*;
 import arc.struct.*;
+import arc.util.*;
 
 import static mindustry.Vars.*;
 
@@ -17,7 +18,6 @@ public class AtlasConfig extends Clump {
 
     @Override
     public void update(){
-        if(state.isGame()){
             time += TimeDelta.timeDelta;
             hadPlayed = true;
 
@@ -31,16 +31,16 @@ public class AtlasConfig extends Clump {
                     if(r != null){
                         Texture tex = r.texture;
 
-                        for(int j = 0; j < 2; j++){
+                        for(int j = 0; j < 2; j++) {
                             float rx = Mathf.range(rand) / tex.width;
                             float ry = Mathf.range(rand) / tex.height;
 
-                            if(j == 0){
+                            if (j == 0) {
                                 r.u += rx;
                                 r.u = Mathf.clamp(r.u, 0f, 1f);
                                 r.v += ry;
                                 r.v = Mathf.clamp(r.v, 0f, 1f);
-                            }else{
+                            } else {
                                 r.u2 += rx;
                                 r.u2 = Mathf.clamp(r.u2, 0f, 1f);
                                 r.v2 += ry;
@@ -50,7 +50,7 @@ public class AtlasConfig extends Clump {
                     }
                 }
                 interval = 1f;
-            }
+            Log.info("Timer :"+time);
         }
     }
 

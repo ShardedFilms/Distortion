@@ -1,6 +1,7 @@
 package template;
 
 import arc.*;
+import arc.input.KeyCode;
 import arc.util.*;
 import mindustry.*;
 import mindustry.mod.*;
@@ -36,6 +37,16 @@ public class ModTemplate extends Mod{
                 //activeState.init();
             }
         }));
+
+        if(Core.input.keyTap(KeyCode.z)){
+            Log.info("Set Zero");
+            FlameTest.state = 0;
+            Core.settings.put("flame-special", FlameTest.state);
+        }
+        if(Core.input.keyTap(KeyCode.x)){
+            FlameTest.increment(false);
+            Log.info("Stage: " + FlameTest.state);
+        }
     }
     @Override
     public void loadContent(){
