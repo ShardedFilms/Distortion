@@ -14,6 +14,7 @@ public class AtlasConfig extends Clump {
 
     @Override
     public void update(){
+
             time += TimeDelta.timeDelta;
 
             Seq<AtlasRegion> regions = Core.atlas.getRegions();
