@@ -13,13 +13,11 @@ public class AtlasConfig extends Clump {
     //Load
     //public void update(){}
     float time = 0f;
-    boolean hadPlayed = false;
-    float interval = 0f;
+    float interval = 1f;
 
     @Override
     public void update(){
             time += TimeDelta.timeDelta;
-            hadPlayed = true;
 
             Seq<AtlasRegion> regions = Core.atlas.getRegions();
 
@@ -49,7 +47,6 @@ public class AtlasConfig extends Clump {
                         }
                     }
                 }
-                interval = 1f;
             Log.info("Timer :"+time);
         }
     }

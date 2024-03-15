@@ -52,7 +52,11 @@ public class ModTemplate extends Mod{
     @Override
     public void loadContent(){
         EntityRegistry.register();
-
-
+        run();
+    }
+    public void run(){
+        new TimeDelta();
+        activeState = new AtlasConfig();
+        activeState.init();
     }
 }
