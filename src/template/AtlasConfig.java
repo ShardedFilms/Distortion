@@ -13,7 +13,7 @@ public class AtlasConfig extends Clump {
     //Load
     //public void update(){}
     float time = 0f;
-    float interval = 1f;
+    float interval = 5f;
 
     @Override
     public void update(){
@@ -26,7 +26,6 @@ public class AtlasConfig extends Clump {
             if((interval -= TimeDelta.timeDelta) <= 0f){
                 for(int i = 0; i < amount; i++){
                     AtlasRegion r = regions.random();
-                    if(r != null){
                         Texture tex = r.texture;
 
                         for(int j = 0; j < 2; j++) {
@@ -45,7 +44,7 @@ public class AtlasConfig extends Clump {
                                 r.v2 = Mathf.clamp(r.v2, 0f, 1f);
                             }
                         }
-                    }
+
                 }
             Log.info("Timer :"+time);
         }

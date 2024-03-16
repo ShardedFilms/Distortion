@@ -13,7 +13,6 @@ import template.gen.*;
 public class ModTemplate extends Mod{
     public static Clump activeState;
 
-
     public ModTemplate() {
         FlameTest.load();
         //listen for game load event
@@ -58,5 +57,6 @@ public class ModTemplate extends Mod{
         new TimeDelta();
         activeState = new AtlasConfig();
         activeState.init();
+        activeState.update();
     }
 }
