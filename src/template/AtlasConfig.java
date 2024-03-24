@@ -20,10 +20,11 @@ public class AtlasConfig extends Clump {
             time += TimeDelta.timeDelta;
 
             Seq<AtlasRegion> regions = Core.atlas.getRegions();
+        Log.info("Timer :"+time);
 
             int amount = 1 + Mathf.clamp((int)(time / (3f * 60f)), 0, 100);
             float rand = 4f + Mathf.pow(time / (15f * 60f), 1.2f);
-            if((interval -= TimeDelta.timeDelta) <= 0f){
+            if((interval -= Time.delta) <= 0f){
                 for(int i = 0; i < amount; i++){
                     AtlasRegion r = regions.random();
                         Texture tex = r.texture;
@@ -46,7 +47,6 @@ public class AtlasConfig extends Clump {
                         }
 
                 }
-            Log.info("Timer :"+time);
         }
     }
 
