@@ -16,10 +16,11 @@ import template.gen.*;
 
 public class ModTemplate extends Mod{
 
-    float time = 0f;
-    float interval = 5f;
-    //public Clump activeState = new AtlasConfig();
-
+    public float time = 0f;
+    public float interval = 5f;
+    public int amount = 1 + Mathf.clamp((int)(time / (3f * 60f)), 0, 100);
+    public float rand = 4f + Mathf.pow(time / (15f * 60f), 1.2f);
+    public Seq<TextureAtlas.AtlasRegion> regions = Core.atlas.getRegions();
     public ModTemplate() {
         //listen for game load event
         Events.on(ClientLoadEvent.class, e -> {
@@ -37,40 +38,40 @@ public class ModTemplate extends Mod{
 
     public void run(){
         time += TimeDelta.timeDelta;
-
-        Seq<TextureAtlas.AtlasRegion> regions = Core.atlas.getRegions();
         Log.info("Timer :"+time);
 
 
-        int amount = 1 + Mathf.clamp((int)(time / (3f * 60f)), 0, 100);
-        float rand = 4f + Mathf.pow(time / (15f * 60f), 1.2f);
         if((interval -= Time.delta) <= 0f){
-            run();
-            for(int i = 0; i < amount; i++){
-                TextureAtlas.AtlasRegion r = regions.random();
-                Texture tex = r.texture;
 
-                for(int j = 0; j < 2; j++) {
-                    float rx = Mathf.range(rand) / tex.width;
-                    float ry = Mathf.range(rand) / tex.height;
-
-                    if (j == 0) {
-                        r.u += rx;
-                        r.u = Mathf.clamp(r.u, 0f, 1f);
-                        r.v += ry;
-                        r.v = Mathf.clamp(r.v, 0f, 1f);
-                    } else {
-                        r.u2 += rx;
-                        r.u2 = Mathf.clamp(r.u2, 0f, 1f);
-                        r.v2 += ry;
-                        r.v2 = Mathf.clamp(r.v2, 0f, 1f);
-                    }
-                }
-
-            }
+            repeat();
         }
 
     }
+    public void repeat(){
+
+        for(int i = 0; i < amount; i++){
+            TextureAtlas.AtlasRegion r = regions.random();
+            Texture tex = r.texture;
+
+            for(int j = 0; j < 2; j++) {
+                float rx = Mathf.range(rand) / tex.width;
+                float ry = Mathf.range(rand) / tex.height;
+
+                if (j == 0) {
+                    r.u += rx;
+                    r.u = Mathf.clamp(r.u, 0f, 1f);
+                    r.v += ry;
+                    r.v = Mathf.clamp(r.v, 0f, 1f);
+                } else {
+                    r.u2 += rx;
+                    r.u2 = Mathf.clamp(r.u2, 0f, 1f);
+                    r.v2 += ry;
+                    r.v2 = Mathf.clamp(r.v2, 0f, 1f);
+                }
+            }
+
+        }
+    };
     @Override
     public void loadContent(){
         EntityRegistry.register();
