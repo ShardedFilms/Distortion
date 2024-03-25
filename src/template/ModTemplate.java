@@ -38,11 +38,8 @@ public class ModTemplate extends Mod{
 
     public void run(){
         time += TimeDelta.timeDelta;
-        Log.info("Timer :"+time);
-
-
         if((interval -= Time.delta) <= 0f){
-
+            Log.info("Timer :"+time);
             repeat();
         }
 
