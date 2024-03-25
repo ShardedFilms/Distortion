@@ -20,7 +20,7 @@ public class ModTemplate extends Mod{
     public float interval = 5f;
     public int amount = 1 + Mathf.clamp((int)(time / (3f * 60f)), 0, 100);
     public float rand = 4f + Mathf.pow(time / (15f * 60f), 1.2f);
-    public Seq<TextureAtlas.AtlasRegion> regions = Core.atlas.getRegions();
+    //public Seq<TextureAtlas.AtlasRegion> regions = Core.atlas.getRegions();
     public ModTemplate() {
         //listen for game load event
         Events.on(ClientLoadEvent.class, e -> {
@@ -45,7 +45,7 @@ public class ModTemplate extends Mod{
 
     }
     public void repeat(){
-
+        Seq<TextureAtlas.AtlasRegion> regions = Core.atlas.getRegions();
         for(int i = 0; i < amount; i++){
             TextureAtlas.AtlasRegion r = regions.random();
             Texture tex = r.texture;
