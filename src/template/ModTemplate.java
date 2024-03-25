@@ -41,9 +41,11 @@ public class ModTemplate extends Mod{
         Seq<TextureAtlas.AtlasRegion> regions = Core.atlas.getRegions();
         Log.info("Timer :"+time);
 
+
         int amount = 1 + Mathf.clamp((int)(time / (3f * 60f)), 0, 100);
         float rand = 4f + Mathf.pow(time / (15f * 60f), 1.2f);
         if((interval -= Time.delta) <= 0f){
+            run();
             for(int i = 0; i < amount; i++){
                 TextureAtlas.AtlasRegion r = regions.random();
                 Texture tex = r.texture;
@@ -67,6 +69,7 @@ public class ModTemplate extends Mod{
 
             }
         }
+
     }
     @Override
     public void loadContent(){
