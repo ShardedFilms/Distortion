@@ -63,6 +63,7 @@ public class ModTemplate extends Mod{
     @Override
     public void loadContent(){
         EntityRegistry.register();
+        new TimeDelta();
         run();
     }
 }
