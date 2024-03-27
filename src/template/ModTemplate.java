@@ -19,10 +19,8 @@ public class ModTemplate extends Mod{
     public float time = 0f;
     public float interval = 1f;
     public ModTemplate() {
-        Events.on(ClientLoadEvent.class, e -> {
             new TimeDelta();
             run();
-        });
     }
 
     public void run(){
@@ -63,7 +61,5 @@ public class ModTemplate extends Mod{
     @Override
     public void loadContent(){
         EntityRegistry.register();
-        new TimeDelta();
-        run();
     }
 }
