@@ -17,13 +17,15 @@ import template.gen.*;
 public class ModTemplate extends Mod{
 
     public float time = 0f;
-    public float interval = 1f;
+    public float interval = 5f;
     public ModTemplate() {
+        Time.runTask(10,() ->{
             new TimeDelta();
-            run();
+            update();
+    });
     }
 
-    public void run(){
+    public void update(){
         time += TimeDelta.timeDelta;
         Log.info("Timer :"+time);
 
@@ -57,9 +59,5 @@ public class ModTemplate extends Mod{
             }
         }
 
-    }
-    @Override
-    public void loadContent(){
-        EntityRegistry.register();
     }
 }
