@@ -21,11 +21,11 @@ public class ModTemplate extends Mod{
     public ModTemplate() {
         Time.runTask(10,() ->{
             new TimeDelta();
-            update();
+            init();
     });
     }
 
-    public void update(){
+    public void init(){
         time += TimeDelta.timeDelta;
         Log.info("Timer :"+time);
 
