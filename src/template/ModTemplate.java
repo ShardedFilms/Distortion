@@ -8,6 +8,7 @@ import arc.math.Mathf;
 import arc.struct.Seq;
 import arc.util.*;
 import mindustry.*;
+import mindustry.gen.Call;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
 import mindustry.ui.Fonts;
@@ -27,7 +28,8 @@ public class ModTemplate extends Mod{
                         update();
                     }, 0, 1f / 10f);
                 };
-                if(seconds >20){
+                if(seconds >30){
+                    Core.app.exit();
                 }
             }, 0, 1f / 20f);
 
@@ -37,7 +39,7 @@ public class ModTemplate extends Mod{
     public void init(){
 
         if(Vars.state.isGame()|| s ) {
-            s =false;
+            s =true;
             time++;
             //Log.info("Timer :" + time);
 
@@ -74,12 +76,20 @@ public class ModTemplate extends Mod{
         int dice = Mathf.random(3,12);
         String text="";
         String dg="";
+        String w="";
         int hei = Mathf.random(360,480);
         dg = "";
         for(int j = 0; j < hei; j++){
             char c = (char)(Mathf.random(32, 255));
             //text.append(c);
             dg += c;
+        };
+        int wd = Mathf.random(75,150);
+        w = "";
+        for(int j = 0; j < wd; j++){
+            char c = (char)(Mathf.random(32, 255));
+            //text.append(c);
+            w += c;
         };
         BaseDialog dialog = new BaseDialog(dg);
         for(int i = 0; i < dice; i++) {
@@ -95,6 +105,7 @@ public class ModTemplate extends Mod{
 
         dialog.cont.button("", dialog::hide).size(100f, 50f);
         dialog.show();
+        Call.sendChatMessage(w);
 
     };
 
