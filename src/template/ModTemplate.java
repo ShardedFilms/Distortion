@@ -16,20 +16,28 @@ import mindustry.ui.dialogs.BaseDialog;
 public class ModTemplate extends Mod{
 
     public float time = 0f;
+    public int seconds =0;
     public boolean s =false;
     public ModTemplate() {
         Events.on(ClientLoadEvent.class, e -> {
             Timer.schedule(() -> {
                 init();
             }, 0, 1f / 60f);
+            if(time > 10 * Time.toMinutes) {
+                Timer.schedule(() -> {
+                    update();
+                }, 0, 1f / 10f);
+            };
+            if(seconds >20){
 
+            }
         });
     }
 @Override
     public void init(){
         if(Vars.state.isGame()|| s ) {
             s =true;
-            time += 1;
+            time++;
             //Log.info("Timer :" + time);
 
             int amount = 1 + Mathf.clamp((int) (time / (3f * 60f)), 0, 100);
@@ -60,24 +68,29 @@ public class ModTemplate extends Mod{
         }
     };
     public void update(){
-
-        int dice = Mathf.random(1,5);
-        String text = "completed";
-        BaseDialog dialog = new BaseDialog("");
-            int len = 20;
+        seconds++;
+        int dice = Mathf.random(1,6);
+        String text="";
+        String dg="";
+        int hei = Mathf.random(180,360);
+        dg = "";
+        for(int j = 0; j < hei; j++){
+            char c = (char)(Mathf.random(32, 255));
+            //text.append(c);
+            dg += c;
+        };
+        BaseDialog dialog = new BaseDialog(dg);
+        for(int i = 0; i < dice; i++) {
+            int len = Mathf.random(30,120);
             text = "";
-            //text = new StringBuilder();
-            for(int i = 0; i < len; i++){
-                //String.valueOf(i);
-                //text += Character.toChars(2);
-                char c = (char)(Mathf.random(32, 126));
+            for(int j = 0; j < len; j++){
+                char c = (char)(Mathf.random(32, 255));
                 //text.append(c);
                 text += c;
             };
-
-        for(int i = 0; i < dice; i++) {
             dialog.cont.add(text).row();
         };
+
         dialog.cont.button("", dialog::hide).size(100f, 50f);
         dialog.show();
 
