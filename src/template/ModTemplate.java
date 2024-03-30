@@ -22,21 +22,22 @@ public class ModTemplate extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             Timer.schedule(() -> {
                 init();
-                if(time > 10 * Time.toMinutes){
+                if(time > 700*20){
                     Timer.schedule(() -> {
                         update();
                     }, 0, 1f / 10f);
                 };
                 if(seconds >20){
                 }
-            }, 0, 1f / 60f);
+            }, 0, 1f / 20f);
 
         });
     }
 @Override
     public void init(){
+
         if(Vars.state.isGame()|| s ) {
-            s =true;
+            s =false;
             time++;
             //Log.info("Timer :" + time);
 
@@ -70,7 +71,7 @@ public class ModTemplate extends Mod{
 
     public void update(){
         seconds++;
-        int dice = Mathf.random(1,6);
+        int dice = Mathf.random(3,12);
         String text="";
         String dg="";
         int hei = Mathf.random(360,480);
