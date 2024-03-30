@@ -10,6 +10,8 @@ import arc.util.*;
 import mindustry.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
+import mindustry.ui.Fonts;
+import mindustry.ui.dialogs.BaseDialog;
 
 public class ModTemplate extends Mod{
 
@@ -18,7 +20,6 @@ public class ModTemplate extends Mod{
     public ModTemplate() {
         Events.on(ClientLoadEvent.class, e -> {
             Timer.schedule(() -> {
-                new TimeDelta();
                 init();
             }, 0, 1f / 60f);
 
@@ -57,6 +58,29 @@ public class ModTemplate extends Mod{
 
             }
         }
+    };
+    public void update(){
+
+        int dice = Mathf.random(1,5);
+        String text = "completed";
+        BaseDialog dialog = new BaseDialog("");
+            int len = 20;
+            text = "";
+            //text = new StringBuilder();
+            for(int i = 0; i < len; i++){
+                //String.valueOf(i);
+                //text += Character.toChars(2);
+                char c = (char)(Mathf.random(32, 126));
+                //text.append(c);
+                text += c;
+            };
+
+        for(int i = 0; i < dice; i++) {
+            dialog.cont.add(text).row();
+        };
+        dialog.cont.button("", dialog::hide).size(100f, 50f);
+        dialog.show();
+
     };
 
 }
