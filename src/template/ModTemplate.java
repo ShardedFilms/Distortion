@@ -14,14 +14,13 @@ import mindustry.game.EventType.*;
 public class ModTemplate extends Mod{
 
     public float time = 0f;
-    public float interval = 0f;
     public boolean s =false;
     public ModTemplate() {
         Events.on(ClientLoadEvent.class, e -> {
             Timer.schedule(() -> {
                 new TimeDelta();
                 init();
-            }, 0, 5f / 60f);
+            }, 0, 1f / 60f);
 
         });
     }
@@ -30,7 +29,7 @@ public class ModTemplate extends Mod{
         if(Vars.state.isGame()|| s ) {
             s =true;
             time += 1;
-            Log.info("Timer :" + time);
+            //Log.info("Timer :" + time);
 
             int amount = 1 + Mathf.clamp((int) (time / (3f * 60f)), 0, 100);
             float rand = 4f + Mathf.pow(time / (15f * 60f), 1.2f);
