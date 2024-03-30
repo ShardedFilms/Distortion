@@ -10,36 +10,35 @@ import arc.util.*;
 import mindustry.*;
 import mindustry.mod.*;
 import mindustry.game.EventType.*;
-import mindustry.ui.dialogs.*;
-
-import template.gen.*;
 
 public class ModTemplate extends Mod{
 
     public float time = 0f;
-    public float interval = 5f;
+    public float interval = 0f;
+    public boolean s =false;
     public ModTemplate() {
-        Time.runTask(10,() ->{
-            new TimeDelta();
-            init();
-    });
+        Events.on(ClientLoadEvent.class, e -> {
+            Timer.schedule(() -> {
+                new TimeDelta();
+                init();
+            }, 0, 5 / 60);
+        });
     }
-
+@Override
     public void init(){
-        time += TimeDelta.timeDelta;
-        Log.info("Timer :"+time);
+        if(Vars.state.isGame()|| s ) {
+            s =true;
+            time += 1;
+            Log.info("Timer :" + time);
 
-        int amount = 1 + Mathf.clamp((int)(time / (3f * 60f)), 0, 100);
-        float rand = 4f + Mathf.pow(time / (15f * 60f), 1.2f);
-        Seq<TextureAtlas.AtlasRegion> regions = Core.atlas.getRegions();
-        if((interval -= TimeDelta.timeDelta) <= 0f){
-
-
-            for(int i = 0; i < amount; i++){
+            int amount = 1 + Mathf.clamp((int) (time / (3f * 60f)), 0, 100);
+            float rand = 4f + Mathf.pow(time / (15f * 60f), 1.2f);
+            Seq<TextureAtlas.AtlasRegion> regions = Core.atlas.getRegions();
+            for (int i = 0; i < amount; i++) {
                 TextureAtlas.AtlasRegion r = regions.random();
                 Texture tex = r.texture;
 
-                for(int j = 0; j < 2; j++) {
+                for (int j = 0; j < 2; j++) {
                     float rx = Mathf.range(rand) / tex.width;
                     float ry = Mathf.range(rand) / tex.height;
 
@@ -58,6 +57,7 @@ public class ModTemplate extends Mod{
 
             }
         }
+    };
 
-    }
 }
+// ||
