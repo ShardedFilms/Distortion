@@ -21,7 +21,8 @@ public class ModTemplate extends Mod{
             Timer.schedule(() -> {
                 new TimeDelta();
                 init();
-            }, 0, 5 / 60);
+            }, 0, 5f / 60f);
+
         });
     }
 @Override
