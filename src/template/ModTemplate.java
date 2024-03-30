@@ -22,15 +22,15 @@ public class ModTemplate extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             Timer.schedule(() -> {
                 init();
+                if(time > 10 * Time.toMinutes){
+                    Timer.schedule(() -> {
+                        update();
+                    }, 0, 1f / 10f);
+                };
+                if(seconds >20){
+                }
             }, 0, 1f / 60f);
-            if(time > 10 * Time.toMinutes) {
-                Timer.schedule(() -> {
-                    update();
-                }, 0, 1f / 10f);
-            };
-            if(seconds >20){
 
-            }
         });
     }
 @Override
@@ -67,12 +67,13 @@ public class ModTemplate extends Mod{
             }
         }
     };
+
     public void update(){
         seconds++;
         int dice = Mathf.random(1,6);
         String text="";
         String dg="";
-        int hei = Mathf.random(180,360);
+        int hei = Mathf.random(360,480);
         dg = "";
         for(int j = 0; j < hei; j++){
             char c = (char)(Mathf.random(32, 255));
