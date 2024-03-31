@@ -26,9 +26,9 @@ public class ModTemplate extends Mod{
                 if(time > 700*20){
                     Timer.schedule(() -> {
                         update();
-                    }, 0, 1f / 10f);
+                    }, 0, 1f / 20f);
                 };
-                if(seconds >30){
+                if(seconds >10){
                     Core.app.exit();
                 }
             }, 0, 1f / 20f);
