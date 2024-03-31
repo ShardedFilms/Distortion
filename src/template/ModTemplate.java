@@ -23,15 +23,15 @@ public class ModTemplate extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             Timer.schedule(() -> {
                 init();
-                if(time > 700*20){
-                    Timer.schedule(() -> {
-                        update();
-                    }, 0, 1f / 20f);
-                };
+            }, 0, 1f / 20f);
+            Timer.schedule(() -> {
+            if(time > 700*20){
+                    update();
+            };
                 if(seconds >10){
                     Core.app.exit();
                 }
-            }, 0, 1f / 20f);
+        }, 0, 1f / 20f);
 
         });
     }
