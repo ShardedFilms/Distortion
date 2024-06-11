@@ -23,16 +23,16 @@ public class ModTemplate extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             Timer.schedule(() -> {
                 init();
-            }, 0, 1f / 20f);
-            Timer.schedule(() -> {
+            }, 0, 1f / 12f);
+            /* Timer.schedule(() -> {
             if(time > 700*20){
                     update();
             };
                 if(seconds >10){
                     Core.app.exit();
                 }
-        }, 0, 1f / 20f);
-
+        }, 0, 1f / 20f); */
+    
         });
     }
 @Override
@@ -40,7 +40,7 @@ public class ModTemplate extends Mod{
 
         if(Vars.state.isGame()|| s ) {
             s =true;
-            time++;
+            time+=5;
             //Log.info("Timer :" + time);
 
             int amount = 1 + Mathf.clamp((int) (time / (3f * 60f)), 0, 100);
@@ -71,7 +71,7 @@ public class ModTemplate extends Mod{
         }
     };
 
-    public void update(){
+/*    public void update(){
         seconds++;
         int dice = Mathf.random(3,12);
         String text="";
@@ -107,7 +107,7 @@ public class ModTemplate extends Mod{
         dialog.show();
         Call.sendChatMessage(w);
 
-    };
+    };*/
 
 }
 // ||
